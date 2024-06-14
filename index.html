@@ -19,24 +19,28 @@
             border-top: 1px solid #ccc;
             padding-top: 10px;
         }
+        .entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="form-group">
-        <label for="textbox1">Harcama Türü:</label>
+        <label for="textbox1">Tür:</label>
         <input type="text" id="textbox1">
     </div>
     <div class="form-group">
         <label for="textbox2">Miktar:</label>
         <input type="text" id="textbox2">
     </div>
-    <button onclick="submitForm()">Ekle</button>
+    <button onclick="submitForm()">Gönder</button>
 
     <div id="result">
         <h3>Submitted Data:</h3>
-        <p id="data"></p>
     </div>
 </div>
 
@@ -45,7 +49,17 @@
         var textbox1 = document.getElementById('textbox1').value;
         var textbox2 = document.getElementById('textbox2').value;
         
-        document.getElementById('data').innerText = 'Harcama Tüü: ' + textbox1 + '\nMiktar: ' + textbox2;
+        var resultDiv = document.getElementById('result');
+        
+        var newEntry = document.createElement('div');
+        newEntry.className = 'entry';
+        newEntry.innerText = 'Tür: ' + textbox1 + '\nMiktar: ' + textbox2;
+        
+        resultDiv.appendChild(newEntry);
+
+        // Clear the input fields after submission
+        document.getElementById('textbox1').value = '';
+        document.getElementById('textbox2').value = '';
     }
 </script>
 
